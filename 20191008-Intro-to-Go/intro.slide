@@ -1,0 +1,203 @@
+Introduction to Go Programming Language
+or how to make your life simpler
+6:00 8 Oct 2019
+Tags: go, ku, kuemacs
+
+Sandy Uraz
+Vice-President, KU Emacs Club
+ctu@ku.edu
+https://people.ku.edu/~s383u895
+
+* What is Go?
+
+Go, also known as Golang,  is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.
+-- Wikipedia
+
+So...
+
+- Similar to C
+- Memory safe
+- Garbage Collection (GC)
+- Structural typing (strong typing)
+- Native concurrency
+
+* hello, world
+
+- One main entry point to the program, like C.
+- Great package system management, like Python.
+- Native Unicode support, like Java.
+
+.play hello.go
+
+Most of the code examples are taken from the
+.link https://golang.org Official Golang website
+
+* Time
+
+Do you remember how to get time in Java without googling it? Or do you remember the way to format time in C/C++ to a human readable format from UNIX Timestamp?
+
+How does go deal with this problem?
+
+.play time.go
+
+* Math is fun
+
+Math functions are all included and make sense.
+
+.play math.go
+
+* Functions and variables
+
+The functions are simple to declare and simple to use. The only thing that might strike you as odd is the variable type placement. The type goes after the variable name.
+
+.play func.go
+
+* Syntax sugar
+
+Go supports different ways of declaring variables. Honestly, almost no one uses the first two ways. 98% of all variables are declared using `:=`
+
+.play synt.go
+
+* Multiple returns
+
+Functions can return multiple variables!
+
+.play swap.go
+
+* Named returns!
+
+You don't even have to declare the variable you want to return. In some cases, you already have the variable name and want to return it automatically.
+
+.play named.go
+
+* Constants
+
+Constant are constant type and value.
+
+.play const.go
+
+* Loops
+
+.play loop.go
+
+* If
+
+.play if.go
+
+* Switch
+
+.play switch.go
+
+* Defer
+
+Defer is one of the nicest commands out there. What it does is schedules a function or a collection of them to run when the encapsulating function returns. Very useful to close database connection, stop webhooks, close clients, and more!
+
+.play defer.go
+
+* Defer is stackable!
+
+.play stack_defer.go
+
+* Pointers
+
+Go is a garbage collected language that doesn't limit you from using pointers and passing references! It's way quicker than passing objects. Talk about it soon.
+
+.play pointers.go
+
+* Structs
+
+Go doesn't have classes. It has something better. Structs. Go structs.
+
+** Let's talk about C++ real quick
+
+* Some great quotes and wisdom about C++
+
+- Being really good at C++ is like being really good at using rocks to sharpen sticks. – Thant Tessman
+
+- C++ has its place in the history of programming languages. Just as Caligula has his place in the history of the Roman Empire. – Robert Firth
+
+- C++ is the only current language making COBOL look good. – Bertrand Meyer
+
+- C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do, it blows away your whole leg. – Bjarne Stroustrup
+
+- Whenever I solve a difficult problem with C++, I feel like I’ve won a bar fight. – Michael Fogus
+
+Classes are ruining the balance between variables as data and storage container and functions as operators. They are two completely different beasts forced into the same cage. C++ rant is over... for now.
+
+* Back to Go
+
+* Go structs
+
+Go structs are simple and close to how we actually think. Struct is just a collection of variables. Nothing more, nothing less.
+
+.play structs.go
+
+* Go methods
+
+The methods are not a part of the struct. They are called to make operations on the struct, which is a crucial difference and is what makes Go so fast.
+
+.play struct_func.go
+
+* Arrays, finally
+
+Arrays are very important to any programming language. However, Go doesn't really use them. There even was a proposal to remove arrays. Can't say I'm against that.
+
+.play arrays.go
+
+* Slices, good arrays
+
+Slice is just a dynamically allocated array.
+
+.play slices.go
+
+* Length and Capacity
+
+All slices have two charasteristic values: length and capacity.
+
+.play len.go
+
+* Range
+
+.play range.go
+
+* Maps
+
+.play maps.go
+
+* Recursion
+
+.play rec.go
+
+* Closure
+
+.play closure.go
+
+* Go channels
+
+.play channels.go
+
+* Exceptions
+
+Exceptions in go are not command structures like C++ that escape the current evaluation and jump to try/catch section. Exception is just a value of type error. If an error occured, the program doesn't halt until the error is handled, it's on your consciousness to check if the error occured or not and you can deal with it in the main body of the program.
+
+Because errors in Go are not disruptive, they are wicked fast.
+
+.play read.go
+
+* Web server
+
+.play web.go
+
+* Package management
+
+No requirements to make build files. No requirements to have an account on some webservice. No requirements to upload the binary/code and re-tag every release.
+
+You only have to have a valid web git repo. That's it.
+
+    go get github.com/thecsw/mira
+
+Will get the latest version (tag) of that package and install it in your `GOPATH`
+
+* Extra example with RedditAPI
+
+.play reddit.go
